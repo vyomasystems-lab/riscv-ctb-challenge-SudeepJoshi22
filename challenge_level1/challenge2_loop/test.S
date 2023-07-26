@@ -12,15 +12,18 @@ RVTEST_CODE_BEGIN
 
   la t0, test_cases
   li t5, 3
-
+  addi t6,t0,0x24
 loop:
 	lw t1, (t0)
   lw t2, 4(t0)
   lw t3, 8(t0)
   add t4, t1, t2
   addi t0, t0, 12
+  beq t0,t6,stop
   beq t3, t4, loop        # check if sum is correct
   j fail
+  stop:
+  
 
 test_end:
 

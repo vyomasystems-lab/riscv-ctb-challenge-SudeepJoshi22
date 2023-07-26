@@ -21,8 +21,10 @@ mtvec_handler:
   li t1, CAUSE_ILLEGAL_INSTRUCTION
   csrr t0, mcause
   bne t0, t1, fail
+  
   csrr t0, mepc
-
+  addi t0,t0,8
+  csrw mepc,t0
   mret
 
 RVTEST_CODE_END
